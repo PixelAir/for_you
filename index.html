@@ -1,170 +1,59 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hey Virat</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #ffe6e6;
-            transition: 0.5s;
-        }
-        #message {
-            font-size: 24px;
-            margin-top: 100px;
-        }
-        .hidden {
-            display: none;
-        }
-        .btn {
-            padding: 10px 20px;
-            font-size: 18px;
-            margin: 10px;
-            border: none;
-            cursor: pointer;
-            background-color: #ff4d4d;
-            color: white;
-            border-radius: 5px;
-        }
-        .btn:hover {
-            background-color: #ff1a1a;
-        }
-        .moving-no {
-            position: absolute;
-            transition: 0.3s;
-        }
-        .final {
-            font-size: 28px;
-            color: #ff3333;
-            font-weight: bold;
-            animation: heartPop 1s infinite alternate;
-        }
-        @keyframes heartPop {
-            from { transform: scale(1); }
-            to { transform: scale(1.2); }
-        }
-    </style>
+    <title>Hey Virat ❤️</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <audio id="bg-music" src="char_kadam.mp3"></audio> <!-- Add your song here -->
 
-    <audio id="bg-music" src="background.mp3"></audio> <!-- Add your song file here -->
-
+    <!-- First Message -->
     <div id="message">Hey Virat ❤️</div>
     <button id="start-btn" class="btn">Next</button>
 
+    <!-- Question Page -->
     <div id="question1" class="hidden">
         <div id="message">Do you love Isha? ❤️</div>
         <button id="yes1" class="btn">Yes</button>
         <button id="no1" class="btn">No</button>
     </div>
 
+    <!-- Confirmation Pages -->
     <div id="confirm1" class="hidden">
-        <div id="message">Are you sure? Think again! 🤔</div>
         <button id="yes2" class="btn">Yes, I am sure!</button>
         <button id="back1" class="btn">Go Back</button>
     </div>
 
-    <div id="confirm2" class="hidden">
-        <div id="message">Itni jaldi kya h? Soch lo! 🧐</div>
-        <button id="yes3" class="btn">Yes</button>
-        <button id="no3" class="btn">No</button>
-    </div>
-
-    <div id="confirm3" class="hidden">
-        <div id="message">Itna kyu bhao kha rhe ho 🙃 Haan bol do naa 🫠</div>
-        <button id="ok" class="btn">OK</button>
-        <button id="no-moving" class="btn moving-no">No</button>
-    </div>
-
+    <!-- Final Page -->
     <div id="final" class="hidden">
-        <div id="message">Finally, puchh rhi hu... Do you love me? ❤️</div>
         <button id="final-yes" class="btn">Yes</button>
-        <button id="final-no" class="btn moving-no">No</button>
     </div>
 
-    <div id="love-message" class="hidden final">
+    <!-- Love Message -->
+    <div id="love-message" class="hidden">
         Love You More! ❤️
     </div>
 
+    <!-- Valentine's Message -->
     <div id="valentine" class="hidden">
         <div id="message">Ok, so now you are ready! Happy Valentine's Day! 🎉💖</div>
     </div>
 
-    <script>
-        document.getElementById("start-btn").addEventListener("click", function() {
-            document.getElementById("message").textContent = "I have something special for you, but first, answer a few questions!";
-            setTimeout(() => {
-                document.getElementById("message").textContent = "Can I ask?";
-                document.getElementById("start-btn").textContent = "Yes";
-                document.getElementById("start-btn").addEventListener("click", function() {
-                    document.getElementById("start-btn").classList.add("hidden");
-                    document.getElementById("question1").classList.remove("hidden");
-                });
-            }, 2000);
-        });
+    <!-- Additional Cute Messages and Photos (for 3 minutes) -->
+    <div id="more-messages" class="hidden">
+        <div class="message-slide">
+            <div id="message">I love you more than words can say! 💖</div>
+            <img src="your-photo1.jpg" alt="Photo 1">
+        </div>
+        <div class="message-slide">
+            <div id="message">Every moment with you is special. 🥰</div>
+            <img src="your-photo2.jpg" alt="Photo 2">
+        </div>
+        <!-- Add more message slides here as needed -->
+    </div>
 
-        document.getElementById("yes1").addEventListener("click", function() {
-            document.getElementById("question1").classList.add("hidden");
-            document.getElementById("confirm1").classList.remove("hidden");
-        });
-
-        document.getElementById("no1").addEventListener("click", function() {
-            document.getElementById("question1").classList.add("hidden");
-            document.getElementById("confirm2").classList.remove("hidden");
-        });
-
-        document.getElementById("yes2").addEventListener("click", function() {
-            document.getElementById("confirm1").classList.add("hidden");
-            document.getElementById("final").classList.remove("hidden");
-        });
-
-        document.getElementById("back1").addEventListener("click", function() {
-            document.getElementById("confirm1").classList.add("hidden");
-            document.getElementById("question1").classList.remove("hidden");
-        });
-
-        document.getElementById("yes3").addEventListener("click", function() {
-            document.getElementById("confirm2").classList.add("hidden");
-            document.getElementById("final").classList.remove("hidden");
-        });
-
-        document.getElementById("no3").addEventListener("click", function() {
-            document.getElementById("confirm2").classList.add("hidden");
-            document.getElementById("confirm3").classList.remove("hidden");
-        });
-
-        document.getElementById("ok").addEventListener("click", function() {
-            document.getElementById("confirm3").classList.add("hidden");
-            document.getElementById("final").classList.remove("hidden");
-        });
-
-        document.getElementById("final-yes").addEventListener("click", function() {
-            document.getElementById("final").classList.add("hidden");
-            document.getElementById("love-message").classList.remove("hidden");
-            document.getElementById("bg-music").play();
-
-            setTimeout(() => {
-                document.getElementById("love-message").classList.add("hidden");
-                document.getElementById("valentine").classList.remove("hidden");
-            }, 5000);
-        });
-
-        function moveNoButton() {
-            let btn = document.querySelectorAll(".moving-no");
-            btn.forEach(button => {
-                let x = Math.random() * (window.innerWidth - 100);
-                let y = Math.random() * (window.innerHeight - 50);
-                button.style.left = x + "px";
-                button.style.top = y + "px";
-            });
-        }
-
-        document.getElementById("final-no").addEventListener("mouseover", moveNoButton);
-        document.getElementById("no-moving").addEventListener("mouseover", moveNoButton);
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
