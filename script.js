@@ -9,20 +9,21 @@ function typingEffect(element, text, index, callback) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Show the first message "Hey Virat" and remove it after 2 seconds
+    // Start playing the background music when the page loads
+    const bgMusic = document.getElementById("bg-music");
+    bgMusic.play();  // Starts the song (Char Kadam from PK)
+
+    // Show first message "Hey Virat"
     const firstMessage = document.getElementById("message");
     firstMessage.innerHTML = "Hey Virat ❤️";
-    
+
     setTimeout(() => {
         firstMessage.classList.add("hidden");
         typingEffect(firstMessage, "I have something special for you...", 0, () => {
             setTimeout(() => {
                 typingEffect(firstMessage, "But first, you have to answer a few questions!", 0, () => {
                     setTimeout(() => {
-                        // Show the "Can I ask?" message with Yes option
-                        const canIAsk = document.getElementById("message");
-                        canIAsk.innerHTML = "Can I ask? 😊";
-                        document.getElementById("yes1").classList.remove("hidden");
+                        document.getElementById("question1").classList.remove("hidden");
                     }, 1000);
                 });
             }, 2000);
@@ -57,7 +58,7 @@ document.getElementById("yes2").addEventListener("click", function() {
     typingEffect(document.getElementById("message"), "Ok, now you are confirmed!", 0, () => {
         setTimeout(() => {
             document.getElementById("love-message").classList.remove("hidden");
-            document.getElementById("bg-music").play();
+            document.getElementById("bg-music").play();  // Restart or continue the music
         }, 1000);
     });
 });
