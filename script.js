@@ -8,29 +8,41 @@ function typingEffect(element, text, index, callback) {
     }
 }
 
-document.getElementById("start-btn").addEventListener("click", function() {
-    this.classList.add("hidden");
-    typingEffect(document.getElementById("message"), "I have something special for you...", 0, () => {
-        setTimeout(() => {
-            typingEffect(document.getElementById("message"), "But first, answer a few questions!", 0, () => {
-                setTimeout(() => {
-                    document.getElementById("question1").classList.remove("hidden");
-                }, 1000);
-            });
-        }, 1000);
-    });
+document.addEventListener("DOMContentLoaded", () => {
+    // Show the first message "Hey Virat" and remove it after 2 seconds
+    const firstMessage = document.getElementById("message");
+    firstMessage.innerHTML = "Hey Virat ❤️";
+    
+    setTimeout(() => {
+        firstMessage.classList.add("hidden");
+        typingEffect(firstMessage, "I have something special for you...", 0, () => {
+            setTimeout(() => {
+                typingEffect(firstMessage, "But first, you have to answer a few questions!", 0, () => {
+                    setTimeout(() => {
+                        // Show the "Can I ask?" message with Yes option
+                        const canIAsk = document.getElementById("message");
+                        canIAsk.innerHTML = "Can I ask? 😊";
+                        document.getElementById("yes1").classList.remove("hidden");
+                    }, 1000);
+                });
+            }, 2000);
+        });
+    }, 2000);
 });
 
+// After pressing the "Yes" button for "Can I ask?"
 document.getElementById("yes1").addEventListener("click", function() {
-    document.getElementById("question1").classList.add("hidden");
-    typingEffect(document.getElementById("message"), "Are you sure? Think again! 🤔", 0, () => {
+    document.getElementById("yes1").classList.add("hidden");
+    typingEffect(document.getElementById("message"), "Do you love Isha? ❤️", 0, () => {
         setTimeout(() => {
-            document.getElementById("confirm1").classList.remove("hidden");
+            // Show the "Yes" and "No" options for the question "Do you love Isha?"
+            document.getElementById("question1").classList.remove("hidden");
         }, 1000);
     });
 });
 
 document.getElementById("no1").addEventListener("click", function() {
+    // Handle "No" answer logic
     document.getElementById("question1").classList.add("hidden");
     typingEffect(document.getElementById("message"), "Itni jaldi kya h? Soch lo! 🧐", 0, () => {
         setTimeout(() => {
@@ -40,6 +52,7 @@ document.getElementById("no1").addEventListener("click", function() {
 });
 
 document.getElementById("yes2").addEventListener("click", function() {
+    // Handle "Yes" answer logic
     document.getElementById("confirm1").classList.add("hidden");
     typingEffect(document.getElementById("message"), "Ok, now you are confirmed!", 0, () => {
         setTimeout(() => {
@@ -48,29 +61,3 @@ document.getElementById("yes2").addEventListener("click", function() {
         }, 1000);
     });
 });
-
-document.getElementById("final-yes").addEventListener("click", function() {
-    document.getElementById("love-message").classList.add("hidden");
-    typingEffect(document.getElementById("message"), "Happy Valentine's Day! 🎉💖", 0, () => {
-        setTimeout(() => {
-            document.getElementById("valentine").classList.remove("hidden");
-        }, 1000);
-    });
-});
-
-setTimeout(() => {
-    document.getElementById("more-messages").classList.remove("hidden");
-    setTimeout(() => {
-        setInterval(() => {
-            const slides = document.querySelectorAll('.message-slide');
-            slides.forEach(slide => {
-                slide.classList.add("hidden");
-            });
-            setTimeout(() => {
-                slides.forEach(slide => {
-                    slide.classList.remove("hidden");
-                });
-            }, 1000);
-        }, 3000);
-    }, 3000);
-}, 2000);
