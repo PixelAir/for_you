@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Show "But first you have to answer a few questions" message
     function showNextQuestionMessage() {
-        typeMessage(messageElement, "But first, you have to answer a few questions.", 100, () => {
+        typeMessage(messageElement, "But first, you have to answer few questions.", 100, () => {
             setTimeout(() => {
                 showCanIAskMessage();
             }, 5000);
