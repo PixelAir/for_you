@@ -3,54 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hey Virat ❤️</title>
+    <title>For You</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <audio id="bg-music" loop autoplay>
-        <source src="kesariya.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
+    <div id="message-container">
+        <p id="message"></p>
+        <button id="nextBtn" onclick="nextMessage()">Next</button>
+    </div>
+    
+    <audio id="backgroundMusic" loop>
+        <source src="https://raw.githubusercontent.com/PixelAir/for_you/main/Kesariya-Female-Version-Romantic-Hindi-1.mp3" type="audio/mpeg">
     </audio>
-
-    <!-- First Message -->
-    <div id="message"></div>
-
-    <!-- I have something special message -->
-    <div id="something-special" class="hidden"></div>
-
-    <!-- Question Page -->
-    <div id="question1" class="hidden">
-        <p>Do you love Isha? ❤️</p>
-        <button id="yes1" class="btn">Yes</button>
-        <button id="no1" class="btn">No</button>
-    </div>
-
-    <!-- Confirmation Pages -->
-    <div id="confirm1" class="hidden">
-        <button id="yes2" class="btn">Yes, I am sure!</button>
-        <button id="back1" class="btn">Go Back</button>
-    </div>
-
-    <!-- Final Page -->
-    <div id="final" class="hidden">
-        <button id="final-yes" class="btn">Yes</button>
-    </div>
-
-    <!-- Love Message -->
-    <div id="love-message" class="hidden">
-        Love You More! ❤️
-    </div>
-
-    <!-- You Are Ready Page (Disclaimer) -->
-    <div id="you-are-ready" class="hidden">
-        <p>You are ready!</p>
-    </div>
-
-    <!-- Valentine's Message (With Glitter Background) -->
-    <div id="valentine" class="hidden">
-        <div id="valentine-message">Happy Valentine's Day! 🎉💖</div>
-    </div>
-
+    
     <script src="script.js"></script>
 </body>
 </html>
