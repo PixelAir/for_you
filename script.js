@@ -1,4 +1,3 @@
-let currentIndex = 0;
 const messages = [
     { text: "Hey Virat", delay: 3000 },
     { text: "I have something special for you", delay: 5000 },
@@ -6,47 +5,51 @@ const messages = [
     { text: "Can I ask?", button: "Yes" },
     { text: "Do you love Isha?", options: ["Yes", "No"] },
     { text: "Are you sure? Think again", options: ["Yes, I am sure", "Go back"], goBackIndex: 4 },
-    { text: "Finally, puchh rhi hu, do you love me naa?", options: ["Yes", "No"] },
+    { text: "Finally, puchh rhi hu, do you love me naa?", options: ["Yes", "No"], noMoves: true },
+    { text: "Itni jaldi kya h, aaram se socho", options: ["Still No", "Go back"], goBackIndex: 6 },
+    { text: "Itna kyu bhao kha rhe ho🙃. Haa boldo na 🫠", options: ["Still No", "Ok"] },
+    { text: "Finally, puchh rhi hu, do you love me naa?", options: ["Yes"] },
     { text: "Love you more ❤️", hearts: true, delay: 5000 },
     { text: "So now you are ready", delay: 3000 },
     { text: "Happy Valentine's Day", finalMusic: true }
 ];
 
+let currentIndex = 0;
 const messageElement = document.getElementById("message");
 const buttonElement = document.getElementById("nextBtn");
+const audioElement = document.getElementById("backgroundMusic");
 
 function nextMessage(selectedOption = null) {
-    // Update the currentIndex based on user options (Go back or Yes)
     if (selectedOption === "Go back") {
         currentIndex = messages[currentIndex].goBackIndex;
     } else if (selectedOption) {
         currentIndex++;
     }
 
-    // Exit if all messages are shown
     if (currentIndex >= messages.length) return;
-
+    
     const msg = messages[currentIndex];
     messageElement.innerHTML = "";
-    buttonElement.style.display = "none"; // Hide the button initially
+    buttonElement.style.display = "none";
 
     if (msg.text) {
         typeMessage(msg.text, () => {
             if (msg.button) {
                 buttonElement.innerText = msg.button;
-                buttonElement.style.display = "block"; // Show the button
+                buttonElement.style.display = "block";
                 buttonElement.onclick = () => nextMessage("Yes");
             } else if (msg.options) {
                 buttonElement.style.display = "none";
-                createOptions(msg.options);
+                createOptions(msg.options, msg.noMoves);
             } else if (msg.delay) {
-                setTimeout(nextMessage, msg.delay); // Set delay for next message
+                setTimeout(nextMessage, msg.delay);
             }
         });
     }
 
     if (msg.finalMusic) {
-        playFinalMusic(); // Play final music when the last message appears
+        audioElement.pause();
+        playFinalMusic();
     }
 }
 
@@ -64,14 +67,27 @@ function typeMessage(text, callback) {
     typingEffect();
 }
 
-function createOptions(options) {
+function createOptions(options, noMoves) {
     messageElement.innerHTML = "";
     options.forEach(option => {
         const btn = document.createElement("button");
         btn.innerText = option;
         btn.onclick = () => nextMessage(option);
+        
+        if (option === "No" && noMoves) {
+            btn.style.position = "absolute";
+            btn.style.left = Math.random() * 80 + "%";
+            btn.style.top = Math.random() * 80 + "%";
+            btn.onmouseover = () => moveButton(btn);
+        }
+        
         document.body.appendChild(btn);
     });
+}
+
+function moveButton(button) {
+    button.style.left = Math.random() * 80 + "%";
+    button.style.top = Math.random() * 80 + "%";
 }
 
 function playFinalMusic() {
@@ -79,7 +95,7 @@ function playFinalMusic() {
     finalMusic.play();
 }
 
-// Start the flow of messages once the page is loaded
 window.onload = function() {
+    audioElement.play();
     nextMessage();
 };
