@@ -25,12 +25,14 @@ body {
 
 #message-container {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 24px;
     padding: 20px;
+    z-index: 10;
+    text-align: center;
 }
 
 button {
