@@ -40,15 +40,18 @@ function showMessage() {
 
     // Proceed to the next message after a delay
     setTimeout(() => {
-        if (currentMessage < messages.length) {
+        if (currentMessage < messages.length - 1) {
             currentMessage++;
             showMessage();
+        } else {
+            console.log("No more messages to display.");
         }
     }, 5000);
 }
 
 // Handle the "Yes" button click
 function handleYesClick() {
+    console.log("Yes button clicked");
     // Custom logic for Yes button (e.g., proceed with the flow)
     if (currentMessage === 3) {
         // "Can I ask?" -> "Do you love Isha?"
@@ -79,6 +82,7 @@ function handleYesClick() {
 
 // Handle the "No" button click
 function handleNoClick() {
+    console.log("No button clicked");
     // Custom logic for No button (e.g., return to previous page or show a message)
     if (currentMessage === 4) {
         // "Do you love Isha?" -> "Itni jaldi kya h?"
