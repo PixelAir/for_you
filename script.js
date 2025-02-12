@@ -31,9 +31,13 @@ function showMessage() {
     document.getElementById("no-btn").style.display = message.showButtons ? "inline-block" : "none";
 
     if (currentMessage === 3) {
-        // For the "Can I ask?" message, add event listener for "Yes"
-        document.getElementById("yes-btn").onclick = () => proceedToNextMessage();
-        document.getElementById("no-btn").onclick = () => alert("You need to click Yes to proceed.");
+        // For "Can I ask?" message, add event listener for "Yes"
+        document.getElementById("yes-btn").onclick = function() {
+            nextMessage(true);
+        };
+        document.getElementById("no-btn").onclick = function() {
+            alert("You need to click Yes to proceed.");
+        };
     }
 
     setTimeout(() => {
@@ -44,7 +48,13 @@ function showMessage() {
     }, 5000);
 }
 
-function proceedToNextMessage() {
-    currentMessage++;
-    showMessage();  // Continue to the next message after "Yes"
+function nextMessage(yesClicked) {
+    if (yesClicked) {
+        currentMessage++;  // Move to the next message if "Yes" is clicked
+        if (currentMessage < messages.length) {
+            showMessage();
+        }
+    } else {
+        alert("You must click Yes to proceed.");
+    }
 }
