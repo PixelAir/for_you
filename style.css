@@ -42,6 +42,26 @@ body {
     color: #333;
 }
 
+/* Style for the 'Happy Valentine's Day' message */
+#happy-valentine {
+    font-size: 50px; /* Larger font */
+    font-weight: bold;
+    color: red; /* Choose any color you prefer */
+    text-transform: uppercase; /* Makes the text more impactful */
+    animation: textAnim 3s ease-out; /* Optional animation */
+}
+
+@keyframes textAnim {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 button {
     margin: 10px;
     padding: 10px 20px;
