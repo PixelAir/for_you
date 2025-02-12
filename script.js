@@ -91,8 +91,7 @@ function moveButton(button) {
 }
 
 function playFinalMusic() {
-    const finalMusic = new Audio("https://raw.githubusercontent.com/PixelAir/for_you/main/music/Love-You-Forever-Mashup.mp3");
-    finalMusic.play();
+    console.log("Final music should play now.");
 }
 
 window.onload = function() {
