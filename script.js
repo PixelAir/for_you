@@ -10,7 +10,7 @@ let messages = [
     { text: "Itna kyu bhao kha rhe ho🙃. Haa boldo na 🫠", showButtons: true },
     { text: "Love you more ❤️", showButtons: false },
     { text: "So now you are ready", showButtons: false },
-    { text: "Happy Valentine's Day", showButtons: false, specialClass: 'happy-valentine' } // Add class for styling
+    { text: "Happy Valentine's Day", showButtons: false, specialClass: 'happy-valentine' }
 ];
 
 let currentMessage = 0;
@@ -51,54 +51,40 @@ function showMessage() {
 
 // Handle the "Yes" button click
 function handleYesClick() {
-    console.log("Yes button clicked");
-    // Custom logic for Yes button (e.g., proceed with the flow)
     if (currentMessage === 3) {
-        // "Can I ask?" -> "Do you love Isha?"
-        currentMessage = 4;
+        currentMessage = 4; // "Can I ask?" -> "Do you love Isha?"
         showMessage();
     } else if (currentMessage === 4) {
-        // "Do you love Isha?" -> "Are you sure?"
-        currentMessage = 5;
+        currentMessage = 5; // "Do you love Isha?" -> "Are you sure?"
         showMessage();
     } else if (currentMessage === 5) {
-        // "Are you sure?" -> "Finally, puchh rhi hu"
-        currentMessage = 6;
+        currentMessage = 6; // "Are you sure?" -> "Finally, puchh rhi hu"
         showMessage();
     } else if (currentMessage === 6) {
-        // "Finally, puchh rhi hu" -> "Itni jaldi kya h?"
-        currentMessage = 7;
+        currentMessage = 7; // "Finally, puchh rhi hu" -> "Itni jaldi kya h?"
         showMessage();
     } else if (currentMessage === 7) {
-        // "Itni jaldi kya h?" -> "Itna kyu bhao kha rhe ho"
-        currentMessage = 8;
+        currentMessage = 8; // "Itni jaldi kya h?" -> "Itna kyu bhao kha rhe ho"
         showMessage();
     } else if (currentMessage === 8) {
-        // "Itna kyu bhao kha rhe ho" -> "Love you more ❤️"
-        currentMessage = 9;
+        currentMessage = 9; // "Itna kyu bhao kha rhe ho" -> "Love you more ❤️"
         showMessage();
     }
 }
 
 // Handle the "No" button click
 function handleNoClick() {
-    console.log("No button clicked");
-    // Custom logic for No button (e.g., return to previous page or show a message)
     if (currentMessage === 4) {
-        // "Do you love Isha?" -> "Itni jaldi kya h?"
-        currentMessage = 7;
+        currentMessage = 7; // "Do you love Isha?" -> "Itni jaldi kya h?"
         showMessage();
     } else if (currentMessage === 6) {
-        // "Finally, puchh rhi hu" -> "Itni jaldi kya h?"
-        currentMessage = 7;
+        currentMessage = 7; // "Finally, puchh rhi hu" -> "Itni jaldi kya h?"
         showMessage();
     } else if (currentMessage === 7) {
-        // "Itni jaldi kya h?" -> "Itna kyu bhao kha rhe ho"
-        currentMessage = 8;
+        currentMessage = 8; // "Itni jaldi kya h?" -> "Itna kyu bhao kha rhe ho"
         showMessage();
     } else if (currentMessage === 8) {
-        // "Itna kyu bhao kha rhe ho" -> "Haa boldo na 🫠"
-        currentMessage = 9;
+        currentMessage = 9; // "Itna kyu bhao kha rhe ho" -> "Haa boldo na 🫠"
         showMessage();
     }
 }
