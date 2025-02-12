@@ -1,4 +1,3 @@
-
 let password = "31 may";  // Set your password
 
 function checkPassword() {
@@ -31,6 +30,12 @@ function showMessage() {
     document.getElementById("yes-btn").style.display = message.showButtons ? "inline-block" : "none";
     document.getElementById("no-btn").style.display = message.showButtons ? "inline-block" : "none";
 
+    if (currentMessage === 3) {
+        // For the "Can I ask?" message, add event listener for "Yes"
+        document.getElementById("yes-btn").onclick = () => proceedToNextMessage();
+        document.getElementById("no-btn").onclick = () => alert("You need to click Yes to proceed.");
+    }
+
     setTimeout(() => {
         currentMessage++;
         if (currentMessage < messages.length) {
@@ -39,10 +44,7 @@ function showMessage() {
     }, 5000);
 }
 
-function nextMessage(yesClicked) {
-    if (yesClicked) {
-        alert("Proceeding to next question...");
-    } else {
-        alert("You have to say Yes!");
-    }
+function proceedToNextMessage() {
+    currentMessage++;
+    showMessage();  // Continue to the next message after "Yes"
 }
