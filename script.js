@@ -111,7 +111,7 @@ function startPasswordPrompt() {
 // Function to check the password
 function checkPassword() {
     let enteredPassword = document.getElementById("password-input").value;
-    let correctPassword = "31May"; // Set the password you want
+    let correctPassword = "31 MAY"; // Set the password you want
 
     if (enteredPassword === correctPassword) {
         document.getElementById("password-screen").style.display = "none";
