@@ -22,6 +22,11 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
 
 #message-container {
     display: none;
@@ -34,7 +39,6 @@ body {
     z-index: 10;
     text-align: center;
     font-weight: bold;
-    font-family: 'Arial', sans-serif;  /* Add a font of your choice */
     color: #333;
 }
 
