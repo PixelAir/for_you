@@ -3,27 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Special Page</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Your Webpage</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
 </head>
 <body>
-
     <!-- Password Screen -->
-    <div id="password-screen">
-        <div class="password-container">
-            <h2>Enter Password</h2>
-            <input type="password" id="password-input" placeholder="Enter password">
-            <button onclick="checkPassword()">Submit</button>
-        </div>
+    <div id="password-screen" class="password-screen">
+        <input type="password" id="password-input" placeholder="Enter password">
+        <button onclick="checkPassword()">Submit</button>
     </div>
 
-    <!-- Message Container -->
+    <!-- Main Message Display Area -->
     <div id="message-container">
-        <p id="message"></p>
-        <button id="yes-btn" onclick="nextMessage(true)">Yes</button>
-        <button id="no-btn" onclick="nextMessage(false)">No</button>
+        <div id="message"></div>
+        <button id="yes-btn" style="display:none;" onclick="handleYesClick()">Yes</button>
+        <button id="no-btn" style="display:none;" onclick="handleNoClick()">No</button>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js"></script> <!-- Link to your JavaScript file -->
 </body>
 </html>
