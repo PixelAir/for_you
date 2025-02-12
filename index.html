@@ -1,1 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <!-- Password Screen -->
+    <div id="password-screen">
+        <div class="password-container">
+            <h2>Enter Password</h2>
+            <input type="password" id="password-input" placeholder="Enter password">
+            <button onclick="checkPassword()">Submit</button>
+        </div>
+    </div>
+
+    <!-- Message Container -->
+    <div id="message-container">
+        <p id="message"></p>
+        <button id="yes-btn" onclick="nextMessage(true)">Yes</button>
+        <button id="no-btn" onclick="nextMessage(false)">No</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
